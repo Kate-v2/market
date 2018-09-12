@@ -24,7 +24,6 @@ class Vendor
     end
   end
 
-  # TO DO - Test me
   def sell_stock(item, qty)
     available = @inventory.find { |key, value| key == item }
     if available == nil

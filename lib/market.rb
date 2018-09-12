@@ -52,21 +52,18 @@ class Market
     all = total_inventory
     return false if all.keys.include?(item) == false
     tf = all[item] >= qty
-    do_sale(item, qty)
     pick_vendor(item, qty)
     return tf
   end
 
   def pick_vendor(item, qty)
     shops = vendors_that_sell(item)
-    enough = shops.map {|obj|
-      inv = shops.inventory
-      inv[item] >= qty
-    }
+    enough = shops.map {|obj| obj.inventory [item] >= qty; obj }
+    enough = enough.sort_by{ |obj| obj.inventory[item]}
     shop = nil
     if enough.count >= 1
       shop = enough[0]
-      shop.sell(item, qty)
+      shop.sell_stock(item, qty)
     else
       shop_around(item, qty, shops)
     end

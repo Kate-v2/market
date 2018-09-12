@@ -104,7 +104,7 @@ class MarketTest < Minitest::Test
     assert_equal all, list
   end
 
-  def test_it_has_enough_items_to_sell_items
+  def test_it_can_sell_items
     @vendor_1.stock("Peaches", 35)
     @vendor_1.stock("Tomatoes", 7)
     @market.add_vendor(@vendor_1)
@@ -114,17 +114,26 @@ class MarketTest < Minitest::Test
     @vendor_3.stock("Peaches", 65)
     @market.add_vendor(@vendor_3)
 
-    sale = @market.sell("Peaches", 200)
-    assert_equal false, sale
+    # sale = @market.sell("Peaches", 200)
+    # assert_equal false, sale
 
     sale = @market.sell("Onion", 1)
     assert_equal false, sale
 
     sale = @market.sell("Banana Nice Cream", 5)
+    impact = @vendor_2.inventory["Banana Nice Cream"]
     assert_equal true, sale
+    assert_equal 45, impact
+
+    sale = @market.sell("Peaches", 40)
+    impact_1 = @vendor_1.inventory["Peaches"]
+    impact_2 = @vendor_3.inventory["Peaches"]
+    assert_equal true, sale
+    assert_equal 0, impact_1
+    assert_equal 60, impact_2
+
   end
 
-  
 
 
 
