@@ -124,6 +124,9 @@ class MarketTest < Minitest::Test
     assert_equal true, sale
   end
 
+  
+
+
 
 
 end

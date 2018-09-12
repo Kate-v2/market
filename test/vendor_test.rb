@@ -40,10 +40,25 @@ class VendorTest < Minitest::Test
     assert_equal 12, @vendor.check_stock("Tomatoes")
     hash = {"Peaches" => 55, "Tomatoes" => 12 }
     assert_equal hash, @vendor.inventory
+  end
+
+  def test_it_can_sell_stock
+    # -- before --
+    @vendor.stock("Peaches", 30)
+    hash = {"Peaches" => 30 }
+    assert_equal hash, @vendor.inventory
+    # -- after --
+    @vendor.sell_stock("Peaches", 5)
+    hash = {"Peaches" => 25 }
+    assert_equal hash, @vendor.inventory
+
+    assert_equal "ERROR", @vendor.sell_stock("Onions", 5)
+
+    assert_equal 5, @vendor.sell_stock("Peaches", 30)
+
 
 
   end
-
 
 
 end
