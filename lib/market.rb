@@ -73,10 +73,10 @@ class Market
   end
 
   def shop_around(item, qty, shops)
-
-
-
-
+    return if qty == 0
+    head, *tail = shops
+    qty = head.sell_stock(item, qty)
+    shop_around(item, qty, tail)
   end
 
 end
