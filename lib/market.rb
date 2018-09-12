@@ -25,6 +25,21 @@ class Market
       it = obj.inventory[item.to_sym]
       it != nil && it > 0
     }
+    # This is extra because technically
+    # we're identifying who sells it,
+    # but this says if it's in stock
   end
+
+  def sorted_item_list
+    list = @vendors.map { |obj| obj.inventory.keys }
+    list = list.flatten.uniq
+    list = list.each {|sym| sym.to_s }
+    # Weird bug - vendor 2 keys are converted to :""
+    # others are just ""
+    # OHH I bet it's because of spaces!
+    list.sort
+  end
+
+
 
 end
