@@ -22,7 +22,7 @@ class Market
 
   def vendors_that_sell(item)
     list = @vendors.find_all { |obj|
-      it = obj.inventory[item.to_sym]
+      it = obj.inventory[item]
       it != nil && it > 0
     }
     # This is extra because technically
@@ -33,7 +33,7 @@ class Market
   def sorted_item_list
     list = @vendors.map { |obj| obj.inventory.keys }
     list = list.flatten.uniq
-    list = list.map {|sym| sym.to_s }
+    # list = list.map {|sym| sym.to_s }
     list.sort
   end
 
