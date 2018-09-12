@@ -33,7 +33,6 @@ class Market
   def sorted_item_list
     list = @vendors.map { |obj| obj.inventory.keys }
     list = list.flatten.uniq
-    # list = list.map {|sym| sym.to_s }
     list.sort
   end
 
@@ -47,7 +46,6 @@ class Market
       }
     }
     return all
-
   end
 
 
