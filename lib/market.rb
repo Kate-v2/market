@@ -51,6 +51,7 @@ class Market
   def sell(item, qty)
     all = total_inventory
     return false if all.keys.include?(item) == false
+    # return false if qty is too high
     tf = all[item] >= qty
     pick_vendor(item, qty)
     return tf
