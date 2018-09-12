@@ -31,6 +31,8 @@ class Vendor
       "ERROR"
     elsif qty > @inventory[item]
       remaining = qty - @inventory[item]
+      @inventory[item] = 0
+      return remaining
     else
       @inventory[item] -= qty
     end

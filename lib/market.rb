@@ -53,13 +53,8 @@ class Market
     return false if all.keys.include?(item) == false
     tf = all[item] >= qty
     do_sale(item, qty)
+    pick_vendor(item, qty)
     return tf
-  end
-
-  def do_sale(item_qty)
-
-
-
   end
 
   def pick_vendor(item, qty)
@@ -71,9 +66,17 @@ class Market
     shop = nil
     if enough.count >= 1
       shop = enough[0]
+      shop.sell(item, qty)
+    else
+      shop_around(item, qty, shops)
     end
-    # else
-    # sell from one store, sell from others
-    return shop
+  end
+
+  def shop_around(item, qty, shops)
+
+
+
+
+  end
 
 end

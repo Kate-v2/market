@@ -55,9 +55,7 @@ class VendorTest < Minitest::Test
     assert_equal "ERROR", @vendor.sell_stock("Onions", 5)
 
     assert_equal 5, @vendor.sell_stock("Peaches", 30)
-
-
-
+    assert_equal 0, @vendor.inventory["Peaches"]
   end
 
 
