@@ -33,10 +33,7 @@ class Market
   def sorted_item_list
     list = @vendors.map { |obj| obj.inventory.keys }
     list = list.flatten.uniq
-    list = list.each {|sym| sym.to_s }
-    # Weird bug - vendor 2 keys are converted to :""
-    # others are just ""
-    # OHH I bet it's because of spaces!
+    list = list.map {|sym| sym.to_s }
     list.sort
   end
 
