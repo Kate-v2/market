@@ -16,11 +16,16 @@ class Vendor
   end
 
   def stock(item, qty)
-    if @inventory.find(item) == nil
+    available = @inventory.find{ |key, value| key.to_s == item }
+    if available == nil
       @inventory[item.to_sym] = qty
     else
       @inventory[item.to_sym] += qty
     end
   end
+
+
+
+
 
 end
