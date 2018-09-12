@@ -48,5 +48,12 @@ class Market
     return all
   end
 
+  def sell(item, qty)
+    all = total_inventory
+    return false if all.keys.include?(item) == false
+    all[item] >= qty
+  end
+
+  
 
 end
