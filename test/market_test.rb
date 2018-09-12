@@ -86,9 +86,22 @@ class MarketTest < Minitest::Test
     sorted = ["Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peaches", "Tomatoes"]
 
     assert_equal sorted, list
+  end
 
+  def test_it_can_list_total_market_inventory
+    @vendor_1.stock("Peaches", 35)
+    @vendor_1.stock("Tomatoes", 7)
+    @market.add_vendor(@vendor_1)
+    @vendor_2.stock("Banana Nice Cream", 50)
+    @vendor_2.stock("Peach-Raspberry Nice Cream", 25)
+    @market.add_vendor(@vendor_2)
+    @vendor_3.stock("Peaches", 65)
+    @market.add_vendor(@vendor_3)
 
+    list = @market.total_inventory
+    all = {"Peaches"=>100, "Tomatoes"=>7, "Banana Nice Cream"=>50, "Peach-Raspberry Nice Cream"=>25}
 
+    assert_equal all, list
 
   end
 

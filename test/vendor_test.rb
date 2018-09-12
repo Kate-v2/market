@@ -28,17 +28,17 @@ class VendorTest < Minitest::Test
     # -- adds an item that doesn't exist --
     @vendor.stock("Peaches", 30)
     assert_equal 30, @vendor.check_stock("Peaches")
-    hash = {Peaches: 30 }
+    hash = {"Peaches" => 30 }
     assert_equal hash, @vendor.inventory
     # -- adds more of the same item --
     @vendor.stock("Peaches", 25)
     assert_equal 55, @vendor.check_stock("Peaches")
-    hash = {Peaches: 55 }
+    hash = {"Peaches" => 55 }
     assert_equal hash, @vendor.inventory
     # -- adds a different item --
     @vendor.stock("Tomatoes", 12)
     assert_equal 12, @vendor.check_stock("Tomatoes")
-    hash = {Peaches: 55, Tomatoes: 12 }
+    hash = {"Peaches" => 55, "Tomatoes" => 12 }
     assert_equal hash, @vendor.inventory
 
 

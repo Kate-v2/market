@@ -37,6 +37,18 @@ class Market
     list.sort
   end
 
+  def total_inventory
+    all = {}
+    @vendors.each { |obj|
+      hash = obj.inventory
+      keys = hash.keys
+      hash.each {|key, val|
+        all[key] == nil ? all[key] = val : all[key] += val
+      }
+    }
+    return all
+
+  end
 
 
 end

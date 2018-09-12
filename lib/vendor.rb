@@ -12,15 +12,15 @@ class Vendor
   end
 
   def check_stock(item)
-    @inventory[item.to_sym] == nil ? 0 : @inventory[item.to_sym]
+    @inventory[item] == nil ? 0 : @inventory[item]
   end
 
   def stock(item, qty)
-    available = @inventory.find{ |key, value| key.to_s == item }
+    available = @inventory.find { |key, value| key == item }
     if available == nil
-      @inventory[item.to_sym] = qty
+      @inventory[item] = qty
     else
-      @inventory[item.to_sym] += qty
+      @inventory[item] += qty
     end
   end
 
